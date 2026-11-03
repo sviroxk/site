@@ -44,7 +44,8 @@ $ npm run build
 - `src/assets/` — изображения и стили
 
 ## 🌐 Деплой
-Проект автоматически публикуется на GitHub Pages при пуше в ветку `main`.
+Проект автоматически публикуется на GitHub Pages при пуше в ветку `main`. 
+**Ваш сайт доступен по ссылке:** [https://sviroxk.github.io/site/](https://sviroxk.github.io/site/)
 
 ## 📄 Лицензия
 MIT License
