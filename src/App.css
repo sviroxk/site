@@ -1,0 +1,67 @@
+:root {
+  --primary: #00ff88;
+  --secondary: #ff6b6b;
+  --dark: #0f172a;
+  --light: #e2e8f0;
+  --star: rgba(255, 255, 255, 0.3);
+  --particle: rgba(0, 255, 136, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--light);
+  background: var(--dark);
+  overflow-x: hidden;
+}
+
+body {
+  background-image: radial-gradient(circle at 20% 20%, var(--star) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, var(--star) 0%, transparent 50%);
+  background-size: 200px 200px;
+}
+
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.cursor {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+  z-index: 9999;
+}
+
+.cursor.hover {
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary);
+  border-color: transparent;
+}
+
+.cursor.click {
+  width: 15px;
+  height: 15px;
+  background-color: var(--secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01s !important;
+  }
+}
