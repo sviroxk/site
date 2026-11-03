@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
-import './App.css';
-
-// Данные
-import { projects, styles } from './data';
+import React, { useEffect, useState } from "react";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import "./App.css";
+import { GameProvider } from "./context/GameContext";
 
 // Компоненты
-import Chrome from './components/Chrome';
-import Home from './pages/Home';
-import Work from './pages/Work';
-import Styles from './pages/Styles';
-import Order from './pages/Order';
-import Visual from './components/Visual';
+import Chrome from "./components/Chrome";
+import GameLevel from "./pages/GameLevel";
+import Visual from "./components/Visual";
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const location = useLocation();
 
   useEffect(() => {
     // Имитация загрузки
@@ -24,26 +18,17 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <HashRouter>
-      <Chrome />
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={location.pathname}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-        >
+    <GameProvider>
+      <HashRouter>
+        <Chrome />
+        <AnimatePresence mode="wait">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/styles" element={<Styles />} />
-            <Route path="/order" element={<Order />} />
+            <Route path="/" element={<GameLevel />} />
           </Routes>
-        </motion.div>
-      </AnimatePresence>
-      <Visual />
-    </HashRouter>
+        </AnimatePresence>
+        <Visual />
+      </HashRouter>
+    </GameProvider>
   );
 };
 

@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Chrome: React.FC = () => {
   const location = useLocation();
@@ -14,8 +14,8 @@ const Chrome: React.FC = () => {
       }
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => document.removeEventListener('mousemove', handleMouseMove);
+    document.addEventListener("mousemove", handleMouseMove);
+    return () => document.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   const isActive = (path: string) => location.pathname === path;
@@ -33,19 +33,19 @@ const Chrome: React.FC = () => {
           <div className="flex gap-6">
             <Link
               to="/work"
-              className={`px-4 py-2 rounded-full transition-all ${isActive('/work') ? 'bg-[var(--primary)] text-[var(--dark)]' : 'hover:bg-[rgba(255,255,255,0.1)]'}`
+              className="px-4 py-2 rounded-full transition-all hover:bg-[rgba(255,255,255,0.1)]"
             >
               Работы
             </Link>
             <Link
               to="/styles"
-              className={`px-4 py-2 rounded-full transition-all ${isActive('/styles') ? 'bg-[var(--primary)] text-[var(--dark)]' : 'hover:bg-[rgba(255,255,255,0.1)]'}`
+              className="px-4 py-2 rounded-full transition-all hover:bg-[rgba(255,255,255,0.1)]"
             >
               Стили
             </Link>
             <Link
               to="/order"
-              className={`px-4 py-2 rounded-full bg-[var(--secondary)] text-white font-medium hover:bg-[rgba(255,255,255,0.2)] transition-all`
+              className="px-11 py-2 rounded-full bg-[var(--secondary)] text-white font-medium hover:bg-[rgba(255,255,255,0.2)] transition-all"
             >
               Обсудить проект
             </Link>
@@ -53,7 +53,7 @@ const Chrome: React.FC = () => {
         </div>
       </motion.nav>
 
-      <div ref={cursorRef} className="cursor"></div>
+      <div ref={cursorRef} className="cursor" style={{ left: "0px", top: "0px" }}></div>
     </>
   );
 };
